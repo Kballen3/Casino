@@ -44,7 +44,7 @@ def menu
     when "2"
       require_relative "black_jack"
       menu
-    when
+    when "3"
       require_relative "high_or_low"
     when quit
       puts "Thank you for coming to Group 2 Casino"
