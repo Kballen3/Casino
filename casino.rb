@@ -40,13 +40,13 @@ def menu
     print "> "
   case gets.strip.downcase
     when "1"
-      require_relative "slots"
+      load "./slots.rb"
       menu
     when "2"
-      # require_relative "black_jack"
+      load "./black_jack"
       menu
     when "3"
-      # require_relative "high_or_low"
+      load "high_or_low"
       menu
     when quit
       puts "Thank you for coming to Group 2 Casino"
