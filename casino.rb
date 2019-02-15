@@ -40,7 +40,7 @@ def menu
     print "> "
   case gets.strip.downcase
     when "1"
-      # require_relative "slots"
+      require_relative "slots"
       menu
     when "2"
       # require_relative "black_jack"
