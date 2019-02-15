@@ -15,7 +15,6 @@ class Slots
       play_slots_5
     when 3
       "Bye!"
-      require_relative "casino"
     else
       puts "Please type a number between 1 and 3."
       initialize
