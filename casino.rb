@@ -46,6 +46,7 @@ def menu
       menu
     when "3"
       require_relative "high_or_low"
+      menu
     when quit
       puts "Thank you for coming to Group 2 Casino"
       sleep 3
