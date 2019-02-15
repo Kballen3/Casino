@@ -24,6 +24,7 @@ end
 $wallet = Wallet.new
 $wallet.start(500)
 
+class Casino
 def initialize
   @games = ["Slots", "Black Jack", "Ride the Bus"]
   puts "Welcome to Group 2 Casino"
@@ -37,15 +38,15 @@ def menu
     puts "#{index + 1}) #{game}"
     end
     print "> "
-  case gets.strip
+  case gets.strip.downcase
     when "1"
-      require_relative "slots"
+      # require_relative "slots"
       menu
     when "2"
-      require_relative "black_jack"
+      # require_relative "black_jack"
       menu
     when "3"
-      require_relative "high_or_low"
+      # require_relative "high_or_low"
       menu
     when quit
       puts "Thank you for coming to Group 2 Casino"
@@ -58,3 +59,5 @@ def menu
       menu
 end
 end
+end
+Casino.new
