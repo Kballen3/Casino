@@ -1,4 +1,5 @@
 require "pry"
+require "colorize"
 
 $budget = nil
 
@@ -27,27 +28,60 @@ $wallet.start(500)
 class Casino
 def initialize
   @games = ["Slots", "Black Jack", "Ride the Bus"]
-  puts "Welcome to Group 2 Casino"
+  print "
+  .-.   .-.      .-.                               .-----.    
+  : :.-.: :      : :                               `-. .-'    
+  : :: :: : .--. : :   .--.  .--. ,-.,-.,-. .--.     : : .--. 
+  : `' `' ;' '_.': :_ '  ..'' .; :: ,. ,. :' '_.'    : :' .; :
+   `.,`.,' `.__.'`.__;`.__.'`.__.':_;:_;:_;`.__.'    :_;`.__.'
+                                                              
+                                                              
+   .--.                          .---.    .--.               _             
+  : .--'                         `--. :  : .--'             :_;            
+  : : _ .--.  .--. .-..-..---.     ,','  : :    .--.   .--. .-.,-.,-. .--. 
+  : :; :: ..'' .; :: :; :: .; `  .'.'_   : :__ ' .; ; `._-.': :: ,. :' .; :
+  `.__.':_;  `.__.'`.__.': ._.'  :____;  `.__.'`.__,_;`.__.':_;:_;:_;`.__.'
+                         : :                                               "
+                         puts
   sleep 1
 menu
 end
 
 def menu
-  puts "What would you like to play?"
+  print "What would you like to play? "
+  puts "($#{$budget})".green
   @games.each_with_index do |game,index|
     puts "#{index + 1}) #{game}"
     end
     print "> "
   case gets.strip.downcase
     when "1"
+      if $budget > 0
       load "./slots.rb"
       menu
+    else 
+      puts
+      puts "You need money to make money!"
+      menu
+    end
     when "2"
+      if $budget > 0
       load "./black_jack"
       menu
-    when "3"
-      load "high_or_low"
+    else 
+      puts
+      puts "You need money to make money!"
       menu
+    end
+    when "3"
+      if $budget > 0
+      load "./high_or_low"
+      menu
+    else 
+      puts
+      puts "You need money to make money!"
+      menu
+    end
     when quit
       puts "Thank you for coming to Group 2 Casino"
       sleep 3
