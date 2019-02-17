@@ -27,7 +27,7 @@ $wallet.start(500)
 
 class Casino
 def initialize
-  @games = ["Slots", "Black Jack", "Ride the Bus"]
+  @games = ["Slots", "Black Jack", "Ride the Bus", "War"]
   print "
   .-.   .-.      .-.                               .-----.    
   : :.-.: :      : :                               `-. .-'    
@@ -66,7 +66,7 @@ def menu
     end
     when "2"
       if $budget > 0
-      load "./black_jack"
+      load "./black_jack.rb"
       menu
     else 
       puts
@@ -75,14 +75,23 @@ def menu
     end
     when "3"
       if $budget > 0
-      load "./high_or_low"
+      load "./high_or_low.rb"
       menu
     else 
       puts
       puts "You need money to make money!"
       menu
     end
-    when quit
+  when "4"
+    if $budget > 0
+    load "./war.rb"
+    menu
+  else 
+    puts
+    puts "You need money to make money!"
+    menu
+  end
+    when "quit"
       puts "Thank you for coming to Group 2 Casino"
       sleep 3
       print `clear`
