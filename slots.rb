@@ -16,6 +16,7 @@ class Slots
       welcome_slots_5
     when 3
       puts "Bye!"
+      print `clear`
     else
       puts "Please type a number between 1 and 3."
       initialize
@@ -95,7 +96,7 @@ end
     puts "    |   __________   |_/ /".red
     puts "    |__|__________|__|__/".red
 
-    $wallet.withdraw(1)
+    $wallet.withdraw(5)
     analyze_results_3
 end
 def welcome_slots_5
@@ -132,7 +133,7 @@ def play_slots_5
    puts "    | -------------- |  / /".red
    puts "    |   __________   |_/ /".red
    puts "    |__|__________|__|__/".red
-   $wallet.withdraw(1)
+   $wallet.withdraw(5)
   analyze_results_5
 end
 end

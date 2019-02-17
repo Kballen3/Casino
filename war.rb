@@ -16,7 +16,7 @@ require "colorize"
 {suit: "♣️",  value: 8, number: 8}, {suit: "♣️",  value: 10, number: "J"}, {suit: "♣️",  value: 12, number: "K"},
 {suit: "♦️",  value: 3, number: 3}, {suit: "♦️",  value: 5, number: 5}, {suit: "♦️",  value: 7, number: 7}, 
 {suit: "♦️",  value: 9, number: 9}, {suit: "♦️",  value: 11, number: "Q"}, {suit: "♦️",  value: 13, number: "A"},]
-
+@battle = []
 def welcome
 puts "Welcome to war!".red
  puts "Do you want to start or see the detials on how the betting works?".red
@@ -43,7 +43,85 @@ end
   cNum = rng.rand(@compDeck.count)
     yCard = @yourDeck[yNum]
     cCard = @compDeck[cNum]
+   print `clear`
     print"
+  
+   | XXXXXXXXXXXXXX |
+   | XXXXXXXXXXXXXX |
+   | XXXXXXXXXXXXXX |
+   | XXXXXXXXXXXXXX |
+   |________________|
+   
+   
+   
+   
+   
+   
+   
+   
+   
+   
+   
+   
+   
+   
+
+
+"
+sleep 0.25
+print `clear`
+    print"
+    ________________
+   |                |
+   | XXXXXXXXXXXXXX |
+   | XXXXXXXXXXXXXX |
+   | XXXXXXXXXXXXXX |
+   | XXXXXXXXXXXXXX |
+   | XXXXXXXXXXXXXX |
+   | XXXXXXXXXXXXXX |
+   | XXXXXXXXXXXXXX |
+   |________________|
+                                 
+                                  
+                                    
+                     ________________ 
+                    |                |
+                    | XXXXXXXXXXXXXX |
+                    | XXXXXXXXXXXXXX |
+                    | XXXXXXXXXXXXXX |
+                    | XXXXXXXXXXXXXX |
+                    
+                                       
+"
+
+sleep 0.3
+print `clear`
+print"
+    ________________
+   |#{cCard[:number]}               |
+   |#{cCard[:suit]}               |
+   |                |
+   |                |
+   |                | <-- Dealer's card
+   |                |
+   |                |
+   |                |
+   |________________|________________
+                    |                |
+                    | XXXXXXXXXXXXXX |
+                    | XXXXXXXXXXXXXX |
+                    | XXXXXXXXXXXXXX |
+                    | XXXXXXXXXXXXXX |
+                    | XXXXXXXXXXXXXX |
+                    | XXXXXXXXXXXXXX |
+                    | XXXXXXXXXXXXXX |
+                    |________________|
+                    
+"
+
+sleep 0.3
+print `clear`
+print"
     ________________
    |#{cCard[:number]}               |
    |#{cCard[:suit]}               |
@@ -63,23 +141,44 @@ end
                     |                |
                     |                |
                     |________________|
-                    "
+                    
+"
 
-sleep 1
+sleep 0.5
 if cCard[:value] < yCard[:value] 
   puts "You won!".green
 @yourDeck << @compDeck[cNum]
 @compDeck.delete_at(cNum)
-  # $wallet.depo(5)
+@yourDeck << @battle
+@battle = []
+@yourDeck.flatten!
+   $wallet.depo(5)
+   repeat
 elsif cCard[:value] == yCard[:value]
-  puts "Draw!!! Nothing happens".yellow
+  puts "Draw!!! That means War!".red
+  uNum = rng.rand(@yourDeck.count)
+  dNum = rng.rand(@compDeck.count)
+  @battle << @compDeck[cNum]
+  @compDeck.delete_at(cNum)
+  @battle << @yourDeck[cNum]
+  @yourDeck.delete_at(yNum)
+  @battle << @compDeck[dNum]
+  @compDeck.delete_at(dNum)
+  @battle << @yourDeck[uNum]
+  @yourDeck.delete_at(uNum)
+  
+  sleep 2
+  cast
 else
-  puts "You lost".blue
+  puts "You lost".yellow
   @compDeck << @yourDeck[yNum]
   @yourDeck.delete_at(yNum)
+  @compDeck << @battle
+  @battle = []
+  @compDeck.flatten!
     $wallet.withdraw(5)
+    repeat
  end
- repeat
 end 
 
 def repeat
@@ -98,7 +197,7 @@ def repeat
   else
     puts
 print "Go again?".red
-puts "(Dealer: #{@compDeck.count} cards ) (You: #{@yourDeck.count} cards)"
+puts " (Dealer: #{@compDeck.count} cards) (You: #{@yourDeck.count} cards)"
 print "(yes/no)> "
 case gets.strip.downcase
 when "yes"
@@ -119,5 +218,6 @@ else
   repeat
 end
 end
+
 end
  welcome
