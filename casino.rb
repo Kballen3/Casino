@@ -46,7 +46,7 @@ def menu
       load "./black_jack"
       menu
     when "3"
-      load "high_or_low"
+      load "higher_lower.rb"
       menu
     when quit
       puts "Thank you for coming to Group 2 Casino"
