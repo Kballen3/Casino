@@ -58,6 +58,7 @@ class Game
     end
     
     def ride_again
+        puts "($#{$budget})".green
         puts "Ride again?".yellow
         puts "1) Yes!".green
         puts "2) No!".red
@@ -210,7 +211,7 @@ class Game
         @final_guess = @final_card.suit
         guess = gets.to_s.strip.capitalize
         if guess == @final_guess
-            puts "Correct! You win $20!".yellow
+            puts "Correct! You win $200!".yellow
             $wallet.depo(200)
             ride_again
         else
