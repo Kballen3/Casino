@@ -31,7 +31,7 @@ $wallet.start(500)
 class Casino
   def initialize
     @games = ["Slots", "Black Jack", "Ride the Bus"]
-    printf "
+    puts "
     .-.   .-.      .-.                               .-----.    
     : :.-.: :      : :                               `-. .-'    
     : :: :: : .--. : :   .--.  .--. ,-.,-.,-. .--.     : : .--. 

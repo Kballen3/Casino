@@ -77,6 +77,7 @@ def welcome_slots_3
 end
 end
   def play_slots_3
+    print `clear`
     column_1 = ["🍒", "🍊", "🍋", "🍉", "🍇",]
     column_2 = ["🍒", "🍊", "🍋", "🍉", "🍇",]
     column_3 = ["🍒", "🍊", "🍋", "🍉", "🍇",]

@@ -29,7 +29,7 @@ class Deck
     def generate_deck
         @suits.each do |suit|
             @ranks.size.times do |i|
-                color = (suit == 'Spades' || suit == 'Clubs') ? 'black' : 'red'
+                color = (suit == 'Spades' || suit == 'Clubs') ? 'Black' : 'Red'
                 @cards << Card.new(@ranks[i], suit, color)
             end
         end
@@ -49,7 +49,7 @@ class Game
         print `clear`
         @d = Deck.new
         puts "Cost: $5".green
-        puts "Potential winnings: $20".green
+        puts "Potential winnings: $200".green
         sleep(2)
         print `clear`
         puts "Prepare to ride the bus...🚌".yellow
@@ -64,11 +64,15 @@ class Game
         reride = gets.to_i
         case reride
         when 1
-            print `clear`
-            guess_color
+            if $budget > 5
+                print `clear`
+                guess_color
+            else 
+                puts "Looks like you're out of money!"
+            end
         when 2
             print `clear`
-            load "casino.rb"
+            # load "casino.rb"
         else
             puts "Invalid Choice".red
             ride_again
@@ -78,7 +82,7 @@ class Game
     def guess_color
         $wallet.withdraw(5)
         puts "Red or Black?".cyan
-        guess = gets.to_s.strip
+        guess = gets.to_s.strip.capitalize
         @card = @d.cards.sample
         color = @card.color
         if guess == color
@@ -96,9 +100,9 @@ class Game
         puts "#{@card.rank} higher or lower?".cyan
         @card_2 = @d.cards.sample
         @num = @card_2.rank
-        guess = gets.to_s.strip
+        guess = gets.to_s.strip.capitalize
         case guess
-        when "higher"
+        when "Higher"
             if @num > @card.rank == true
                 puts "Correct!".green
                 sleep(1)
@@ -111,7 +115,7 @@ class Game
                 puts "Incorrect :(".red
                 ride_again
             end
-        when "lower"
+        when "Lower"
             if @num < @card.rank == true
                 puts "Correct!".green
                 sleep(1)
@@ -138,9 +142,9 @@ class Game
         end
         @card_3 = @d.cards.sample
         @rank_2 = @card_3.rank
-        guess = gets.to_s.strip
+        guess = gets.to_s.strip.capitalize
         case guess
-        when "outside"
+        when "Outside"
             if @num < @card.rank
                 outside = @rank_2.between?(@num, @rank_2)
                 if outside == true
@@ -167,7 +171,7 @@ class Game
                 puts "Same number! Move on...".blue
                 guess_suit
             end
-        when "middle"
+        when "Middle"
             if @num < @card.rank
                 middle = @rank_2.between?(@num, @card.rank)
                 if middle == true
@@ -204,10 +208,10 @@ class Game
         puts "Hearts, Clubs, Diamonds, or Spades?".cyan
         @final_card = @d.cards.sample
         @final_guess = @final_card.suit
-        guess = gets.to_s.strip
+        guess = gets.to_s.strip.capitalize
         if guess == @final_guess
             puts "Correct! You win $20!".yellow
-            $wallet.depo(20)
+            $wallet.depo(200)
             ride_again
         else
             puts "Incorrect :(".red
