@@ -46,12 +46,17 @@ class Game
     attr_accessor :cards
 
     def initialize
+        print `clear`
         @d = Deck.new
+        puts "Cost: $5".green
+        puts "Potential winnings: $20".green
+        sleep(2)
+        print `clear`
         puts "Prepare to ride the bus...🚌".yellow
         sleep(2)
         guess_color
     end
-
+    
     def ride_again
         puts "Ride again?".yellow
         puts "1) Yes!".green
@@ -71,6 +76,7 @@ class Game
     end
     
     def guess_color
+        $wallet.withdraw(5)
         puts "Red or Black?".cyan
         guess = gets.to_s.strip
         @card = @d.cards.sample
@@ -200,7 +206,8 @@ class Game
         @final_guess = @final_card.suit
         guess = gets.to_s.strip
         if guess == @final_guess
-            puts "Correct! You win!".yellow
+            puts "Correct! You win $20!".yellow
+            $wallet.depo(20)
             ride_again
         else
             puts "Incorrect :(".red
