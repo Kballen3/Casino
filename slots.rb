@@ -2,6 +2,7 @@
 require "colorize"
 class Slots
   def initialize
+    print `clear`
     puts "Welcome to Slots".cyan
     puts "Make your choice:".green
     puts "1) Play 3 Column Slots".light_blue
@@ -14,7 +15,7 @@ class Slots
     when 2
       welcome_slots_5
     when 3
-      "Bye!"
+      puts "Bye!"
     else
       puts "Please type a number between 1 and 3."
       initialize
@@ -30,6 +31,7 @@ class Slots
       puts "Nice try! But you didn't win any money! Want to try again? (yes/no)"
       input = gets.strip.downcase
       if input == "yes" && $budget > 0
+        print `clear`
         play_slots_3
       elsif input == "yes" && $budget == 0
         puts 
@@ -51,6 +53,7 @@ class Slots
     else puts "Nice try! But you didn't win any money! Want to try again? (yes/no)"
       input = gets.strip.downcase
         if input == "yes" && $budget > 0
+          print `clear`
           play_slots_5
         elsif input == "yes" && $budget == 0
           puts 
@@ -77,6 +80,7 @@ def welcome_slots_3
 end
 end
   def play_slots_3
+    print `clear`
     column_1 = ["🍒", "🍊", "🍋", "🍉", "🍇",]
     column_2 = ["🍒", "🍊", "🍋", "🍉", "🍇",]
     column_3 = ["🍒", "🍊", "🍋", "🍉", "🍇",]

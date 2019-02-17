@@ -96,11 +96,13 @@ def repeat
     puts "Looks like your'e out of money...".red
     sleep 1
   else
+    puts
 print "Go again?".red
 puts "(Dealer: #{@compDeck.count} cards ) (You: #{@yourDeck.count} cards)"
 print "(yes/no)> "
 case gets.strip.downcase
 when "yes"
+  print `clear`
   cast
 when "no"
   puts "Are you sure you want to leave?
