@@ -160,7 +160,7 @@ elsif cCard[:value] == yCard[:value]
   dNum = rng.rand(@compDeck.count)
   @battle << @compDeck[cNum]
   @compDeck.delete_at(cNum)
-  @battle << @yourDeck[cNum]
+  @battle << @yourDeck[yNum]
   @yourDeck.delete_at(yNum)
   @battle << @compDeck[dNum]
   @compDeck.delete_at(dNum)
