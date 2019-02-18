@@ -58,7 +58,9 @@ class Game
     end
     
     def ride_again
-        puts "($#{$budget})".green
+        sleep(2)
+        print `clear`
+        puts "Wallet: $#{$budget}".green
         puts "Ride again?".yellow
         puts "1) Yes!".green
         puts "2) No!".red
@@ -69,7 +71,7 @@ class Game
                 print `clear`
                 guess_color
             else 
-                puts "Looks like you're out of money!"
+                puts "Looks like you're out of money!".light_blue
             end
         when 2
             print `clear`
@@ -93,6 +95,7 @@ class Game
             high_low
         else
             puts "Incorrect :(".red
+            puts "Card drawn: #{color}".light_green
             ride_again
         end
     end
@@ -114,6 +117,7 @@ class Game
                 high_low
             else
                 puts "Incorrect :(".red
+                puts "Card drawn: #{@num}".light_green
                 ride_again
             end
         when "Lower"
@@ -127,6 +131,7 @@ class Game
                 high_low
             else
                 puts "Incorrect :(".red
+                puts "Card drawn: #{@num}".light_green
                 ride_again
             end
         else
@@ -150,6 +155,7 @@ class Game
                 outside = @rank_2.between?(@num, @rank_2)
                 if outside == true
                     puts "Incorrect :(".red
+                    puts "Card drawn: #{@rank_2}".light_green
                     ride_again
                 else
                     puts "Correct!".green
@@ -161,6 +167,7 @@ class Game
                 out = @rank_2.between?(@rank_2, @num)
                 if out == true
                     puts "Incorrect :(".red
+                    puts "Card drawn: #{@rank_2}".light_green
                     ride_again
                 else
                     puts "Correct!".green
@@ -182,6 +189,7 @@ class Game
                     guess_suit
                 else
                     puts "Incorrect :(".red
+                    puts "Card drawn: #{@rank_2}".light_green
                     ride_again
                 end
             elsif @card.rank < @num
@@ -193,6 +201,7 @@ class Game
                     guess_suit
                 else
                     puts "Incorrect :(".red
+                    puts "Card drawn: #{@rank_2}".light_green
                     ride_again
                 end
             else
@@ -216,6 +225,7 @@ class Game
             ride_again
         else
             puts "Incorrect :(".red
+            puts "Card drawn: #{@final_card.suit}".light_green
             ride_again
         end
     end
